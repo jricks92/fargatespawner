@@ -118,7 +118,7 @@ class FargateSpawnerEC2InstanceProfileAuthentication(FargateSpawnerAuthenticatio
 
         if now > self.expiration:
             aws_iam_role = requests.get('http://169.254.169.254/latest/meta-data/iam/security-credentials/')
-            request = request.get('http://169.254.169.254/latest/meta-data/iam/security-credentials/' + aws_iam_role)
+            request = requests.get('http://169.254.169.254/latest/meta-data/iam/security-credentials/' + aws_iam_role)
             creds = json.loads(request)
             self.aws_access_key_id = creds['AccessKeyId']
             self.aws_secret_access_key = creds['SecretAccessKey']
