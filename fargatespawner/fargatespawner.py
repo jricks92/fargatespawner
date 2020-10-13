@@ -341,6 +341,7 @@ async def _make_ecs_request(logger, aws_endpoint, target, dict_data):
                            'POST', path, query, pre_auth_headers, body)
     client = AsyncHTTPClient()
     url = f'https://{aws_endpoint["ecs_host"]}{path}'
+    logger.info(f'URL: {url}')
     request = HTTPRequest(url, method='POST', headers=headers, body=body)
     logger.debug('Making request (%s)', body)
     try:
